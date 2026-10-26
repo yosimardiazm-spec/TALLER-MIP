@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio PLEM - Universidad de La Sabana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { background-color: #f8f9fa; padding-bottom: 50px; }
+        .locked { opacity: 0.5; pointer-events: none; }
+        .nav-tabs .nav-link.locked-tab { color: #6c757d; cursor: not-allowed; }
+        .code-block { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
+        .question-card { margin-bottom: 20px; padding: 15px; border-left: 4px solid #002b5c; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .header-institucional { text-align: center; margin-bottom: 40px; padding: 30px 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 5px solid #002b5c; }
+        /* El logo debe guardarse en la carpeta 'assets' del repositorio */
+        .header-institucional img { height: 130px; margin-bottom: 20px; }
+        .header-institucional h4 { color: #002b5c; font-weight: bold; margin-bottom: 5px;}
+        .header-institucional h5 { color: #444; font-size: 1.1rem; margin-bottom: 5px; }
+        .header-institucional h6 { color: #666; font-size: 1rem; margin-bottom: 10px; }
+        .nav-tabs .nav-link.active { border-top: 3px solid #002b5c; color: #002b5c; }
+        .text-primary { color: #002b5c !important; }
+        .btn-primary { background-color: #002b5c; border-color: #002b5c; }
+        .btn-primary:hover { background-color: #001a38; border-color: #001a38; }
+        .scenario-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    
+    <div class="header-institucional">
+        <!-- Reemplazar con la ruta local en GitHub Pages -->
+        <img src="assets/escudo_azul.png" alt="Escudo Universidad de La Sabana">
+        <h4>Facultad de Ingeniería</h4>
+        <h5>Departamento de Gestión e Infraestructura</h5>
+        <h6>Optimización y analítica</h6>
+        <span class="badge bg-secondary" style="font-size: 0.9rem;">2026-2</span>
+    </div>
+
+    <h2 class="mb-4 text-center" style="color: #002b5c; font-weight: bold;">Taller Práctico: Toma de Decisiones con PLEM</h2>
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold" id="ejemplo-tab" data-bs-toggle="tab" data-bs-target="#ejemplo" type="button" role="tab">Ejemplo Magistral</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold" id="nivel1-tab" data-bs-toggle="tab" data-bs-target="#nivel1" type="button" role="tab" style="color: #495057;">Nivel 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link locked-tab fw-bold" id="nivel2-tab" data-bs-toggle="tab" data-bs-target="#nivel2" type="button" role="tab" disabled>Nivel 2</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link locked-tab fw-bold" id="nivel3-tab" data-bs-toggle="tab" data-bs-target="#nivel3" type="button" role="tab" disabled>Nivel 3</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link locked-tab fw-bold" id="nivel4-tab" data-bs-toggle="tab" data-bs-target="#nivel4" type="button" role="tab" disabled>Nivel 4</button>
+        </li>
+    </ul>
+
+    <div class="tab-content border border-top-0 bg-white p-4 shadow-sm" id="myTabContent" style="border-radius: 0 0 8px 8px;">
+        
+        <!-- ================= EJEMPLO MAGISTRAL ================= -->
+        <div class="tab-pane fade show active" id="ejemplo" role="tabpanel">
+            <h3 class="mb-3 text-primary">Restricciones "Uno u otro" (Either-Or) con Penalización Big M</h3>
+            <div class="scenario-box">
+                <p><strong>Problema:</strong> Una empresa fabrica dos productos (\(x_1\) y \(x_2\)). Debe procesarlos obligatoriamente en la Máquina A <strong>o</strong> en la Máquina B, pero no en ambas. La Máquina A tiene una restricción de tiempo de \(2x_1 + x_2 \le 100\), y la B de \(x_1 + 3x_2 \le 90\). Maximizar beneficio \(Z = 10x_1 + 15x_2\).</p>
+            </div>
+            
+            <h5 class="mt-4 text-primary">Formulación Matemática</h5>
+            <p>Sea \(y \in \{0, 1\}\) donde \(y=1\) activa la Máquina A, y \(y=0\) la Máquina B. Usamos un número muy grande \(M\).</p>
+            <ul>
+                <li><strong>F.O:</strong> \(\max Z = 10x_1 + 15x_2\)</li>
+                <li><strong>Sujeto a:</strong></li>
+                <li>\(2x_1 + x_2 \le 100 + M(1-y)\)</li>
+                <li>\(x_1 + 3x_2 \le 90 + My\)</li>
+                <li>\(x_1, x_2 \ge 0; \quad y \in \{0, 1\}\)</li>
+            </ul>
+
+            <h5 class="mt-4 text-primary">Código Python (PuLP)</h5>
+            <pre class="code-block"><code>import pulp
+
+prob = pulp.LpProblem("Either_Or_Problem", pulp.LpMaximize)
+x1 = pulp.LpVariable('x1', lowBound=0, cat='Continuous')
+x2 = pulp.LpVariable('x2', lowBound=0, cat='Continuous')
+y = pulp.LpVariable('y', cat='Binary')
+
+M = 10000
+prob += 10 * x1 + 15 * x2, "Beneficio"
+prob += 2 * x1 + x2 <= 100 + M * (1 - y), "Maq_A"
+prob += x1 + 3 * x2 <= 90 + M * y, "Maq_B"
+
+prob.solve()
+print("x1 =", pulp.value(x1), "| x2 =", pulp.value(x2), "| Beneficio =", pulp.value(prob.objective))</code></pre>
+            <button class="btn btn-primary mt-4 px-4 py-2" onclick="document.getElementById('nivel1-tab').click()">¡Comenzar Nivel 1!</button>
+        </div>
+
+        <!-- ================= NIVEL 1 ================= -->
+        <div class="tab-pane fade" id="nivel1" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 1: Presupuesto de Capital y Asignación</h3>
+            <p>Resuelve los siguientes modelos (a mano o con software) y selecciona la decisión directiva correcta.</p>
+            <form id="form-nivel1">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 1:</strong> Disponemos de un presupuesto de capital de $50M. Evaluamos 3 proyectos binarios: 
+                        <ul>
+                            <li>Proyecto A: Inversión $20M, VPN esperado $30M.</li>
+                            <li>Proyecto B: Inversión $30M, VPN esperado $40M.</li>
+                            <li>Proyecto C: Inversión $40M, VPN esperado $60M.</li>
+                        </ul>
+                    </div>
+                    <p><strong>1. Al formular el modelo y resolverlo, ¿qué decisión estratégica debe tomar la gerencia para maximizar el VPN sin exceder el presupuesto?</strong></p>
+                    <label><input type="radio" name="q1" value="a"> Ejecutar A y B, logrando un VPN máximo de $70M.</label><br>
+                    <label><input type="radio" name="q1" value="b"> Ejecutar solo el Proyecto C, logrando un VPN máximo de $60M.</label><br>
+                    <label><input type="radio" name="q1" value="c"> Ejecutar A y C, ya que suman el mayor VPN individual, ignorando la restricción de presupuesto.</label>
+                </div>
+
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 2:</strong> Usando los mismos datos del Escenario 1 (Presupuesto $50M), el departamento técnico añade una restricción: <strong>Los proyectos A y B son mutuamente excluyentes</strong> por requerir al mismo director de obra.
+                    </div>
+                    <p><strong>2. Al integrar esta restricción lógica (\(x_A + x_B \le 1\)), ¿cómo cambia la decisión del portafolio óptimo?</strong></p>
+                    <label><input type="radio" name="q2" value="a"> La cartera óptima sigue siendo A y B porque el VPN $70M justifica contratar otro director.</label><br>
+                    <label><input type="radio" name="q2" value="b"> La cartera óptima cambia a ejecutar únicamente el Proyecto C, con un VPN de $60M.</label><br>
+                    <label><input type="radio" name="q2" value="c"> La cartera óptima cambia a ejecutar B y C, asumiendo una penalización.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(1)">Validar Nivel 1</button>
+                <div id="feedback1" class="mt-3 text-danger fw-bold fs-5"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 2 ================= -->
+        <div class="tab-pane fade" id="nivel2" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 2: Cargos Fijos y Lote Mínimo</h3>
+            <form id="form-nivel2">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 3:</strong> Evaluamos lanzar un nuevo producto. El costo fijo de configuración de la planta es $1,000. El costo variable de producción es $10/unidad y el precio de venta es $15/unidad. La capacidad máxima es de 500 unidades. El departamento de marketing confirma que la demanda máxima que podemos vender es <strong>150 unidades</strong>.
+                    </div>
+                    <p><strong>3. Al formular la función de utilidad \( \max 15x - (1000y + 10x) \) sujeto a \( x \le 500y \) y \( x \le 150 \), ¿cuál es la decisión financiera correcta?</strong></p>
+                    <label><input type="radio" name="q3" value="a"> Producir 150 unidades asumiendo una pérdida neta operativa de $250.</label><br>
+                    <label><input type="radio" name="q3" value="b"> Cancelar el lanzamiento del producto (\(y=0, x=0\)), manteniendo la utilidad en $0.</label><br>
+                    <label><input type="radio" name="q3" value="c"> Producir 500 unidades para diluir el costo fijo, aunque sobren 350 unidades en inventario sin vender.</label>
+                </div>
+
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 4:</strong> En la misma planta, ahora la demanda sube a <strong>300 unidades</strong>. Sin embargo, ingeniería establece una restricción de <strong>lote mínimo de producción</strong>: Si la planta se enciende, debe procesar por lo menos 400 unidades por razones de eficiencia térmica (\(x \ge 400y\)).
+                    </div>
+                    <p><strong>4. ¿Qué decisión sugiere la resolución del modelo ante este choque entre la demanda (300) y el lote mínimo (400)?</strong></p>
+                    <label><input type="radio" name="q4" value="a"> Producir 400 unidades y forzar la venta de las 100 restantes en el mercado.</label><br>
+                    <label><input type="radio" name="q4" value="b"> No producir (\(y=0\)), ya que la demanda no alcanza a cubrir la restricción técnica del lote mínimo, haciendo el problema infactible para \(y=1\).</label><br>
+                    <label><input type="radio" name="q4" value="c"> Ignorar la restricción térmica y producir exactamente 300 unidades para obtener $500 de utilidad.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(2)">Validar Nivel 2</button>
+                <div id="feedback2" class="mt-3 text-danger fw-bold fs-5"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 3 ================= -->
+        <div class="tab-pane fade" id="nivel3" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 3: Localización de Instalaciones (Facility Location)</h3>
+            <form id="form-nivel3">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 5:</strong> Debemos atender a un cliente que demanda 10 toneladas de producto. Evaluamos dos posibles plantas: 
+                        <ul>
+                            <li>Planta 1: Costo fijo apertura $100. Costo de envío al cliente $5/ton.</li>
+                            <li>Planta 2: Costo fijo apertura $200. Costo de envío al cliente $2/ton.</li>
+                        </ul>
+                        No hay restricciones de capacidad. Buscamos minimizar el costo total (Fijo + Transporte).
+                    </div>
+                    <p><strong>5. Tras resolver el modelo binario, ¿cuál es la estructura de red óptima?</strong></p>
+                    <label><input type="radio" name="q5" value="a"> Abrir solo la Planta 1, con un costo total del sistema de $150.</label><br>
+                    <label><input type="radio" name="q5" value="b"> Abrir solo la Planta 2, porque su costo variable es menor, con un costo total de $220.</label><br>
+                    <label><input type="radio" name="q5" value="c"> Abrir ambas plantas y enviar 5 toneladas desde cada una para balancear la carga.</label>
+                </div>
+
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 6 (Set Covering):</strong> Tenemos 3 zonas en una ciudad (Z1, Z2, Z3) y buscamos minimizar el número de estaciones de emergencia abiertas. 
+                        <ul>
+                            <li>Abrir en Z1 cubre Z1 y Z2.</li>
+                            <li>Abrir en Z2 cubre Z1, Z2 y Z3.</li>
+                            <li>Abrir en Z3 cubre Z2 y Z3.</li>
+                        </ul>
+                    </div>
+                    <p><strong>6. ¿Cuál es el diseño de infraestructura óptimo y exacto que garantiza cobertura total con el mínimo presupuesto?</strong></p>
+                    <label><input type="radio" name="q6" value="a"> Abrir estaciones en Z1 y Z3 (Total: 2 estaciones).</label><br>
+                    <label><input type="radio" name="q6" value="b"> Abrir únicamente una estación ubicada en Z2 (Total: 1 estación).</label><br>
+                    <label><input type="radio" name="q6" value="c"> Abrir tres estaciones para tener redundancia en el servicio.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(3)">Validar Nivel 3</button>
+                <div id="feedback3" class="mt-3 text-danger fw-bold fs-5"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 4 ================= -->
+        <div class="tab-pane fade" id="nivel4" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 4: Optimización Integrada (LRP y Scheduling)</h3>
+            <form id="form-nivel4">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 7:</strong> Hay que enviar 100 cajas a un destino. Contratamos camiones enteros (variables enteras, no binarias). 
+                        <ul>
+                            <li>Tipo A: Capacidad 80 cajas, Costo por viaje $50.</li>
+                            <li>Tipo B: Capacidad 120 cajas, Costo por viaje $60.</li>
+                        </ul>
+                    </div>
+                    <p><strong>7. Al formular el modelo de ruteo de capacidad entera, ¿qué flota de transporte minimiza el costo logístico?</strong></p>
+                    <label><input type="radio" name="q7" value="a"> Contratar dos camiones Tipo A (Costo $100, Capacidad total 160).</label><br>
+                    <label><input type="radio" name="q7" value="b"> Contratar un camión Tipo B (Costo $60, Capacidad total 120).</label><br>
+                    <label><input type="radio" name="q7" value="c"> Contratar un camión Tipo A y enviar el excedente por paquetería.</label>
+                </div>
+
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 8:</strong> En un horizonte de 3 días, tenemos 3 máquinas de planta. Cada una debe recibir mantenimiento preventivo exactamente 1 día en ese periodo. Por restricciones de personal, <strong>no se puede intervenir más de 1 máquina en el mismo día</strong>.
+                    </div>
+                    <p><strong>8. Al usar variables binarias \(x_{it}\) (máquina \(i\) en día \(t\)), ¿qué decisión de programación refleja una solución óptima y factible?</strong></p>
+                    <label><input type="radio" name="q8" value="a"> Hacer mantenimiento a todas las máquinas el Día 1 para liberar capacidad el resto de la semana.</label><br>
+                    <label><input type="radio" name="q8" value="b"> Distribuir el mantenimiento programando exactamente una máquina distinta por cada día del horizonte.</label><br>
+                    <label><input type="radio" name="q8" value="c"> Posponer el mantenimiento de la tercera máquina para el Día 4.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(4)">Validar Nivel 4</button>
+                <div id="feedback4" class="mt-3 text-danger fw-bold fs-5"></div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Respuestas correctas actualizadas
+    const answers = {
+        1: { q1: 'a', q2: 'b' },
+        2: { q3: 'b', q4: 'b' },
+        3: { q5: 'a', q6: 'b' },
+        4: { q7: 'b', q8: 'b' }
+    };
+
+    function checkLevel(level) {
+        const form = document.getElementById('form-nivel' + level);
+        const formData = new FormData(form);
+        const correctAnswers = answers[level];
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (formData.get(key) === correctAnswers[key]) {
+                score++;
+            }
+        }
+
+        const feedback = document.getElementById('feedback' + level);
+        if (score === total) {
+            feedback.className = 'mt-3 text-success fw-bold fs-5';
+            feedback.innerText = '¡Decisiones correctas basadas en los modelos! Nivel completado.';
+            
+            if (level < 4) {
+                let nextLevel = level + 1;
+                let nextTab = document.getElementById('nivel' + nextLevel + '-tab');
+                nextTab.disabled = false;
+                nextTab.classList.remove('locked-tab');
+                nextTab.style.color = '#002b5c';
+                // Redirigir automáticamente
+                setTimeout(() => nextTab.click(), 1500);
+            } else {
+                feedback.innerText = '¡FELICIDADES! Has completado el laboratorio resolviendo modelos PLEM y tomando decisiones gerenciales precisas.';
+            }
+        } else {
+            feedback.className = 'mt-3 text-danger fw-bold fs-5';
+            feedback.innerText = `Resultados incorrectos. Has acertado ${score} de ${total}. Revisa los modelos y cálculos.`;
+        }
+    }
+</script>
+
+</body>
+</html>
