@@ -10,11 +10,13 @@
     <style>
         body { background-color: #f8f9fa; padding-bottom: 50px; }
         .locked { opacity: 0.5; pointer-events: none; }
+        .nav-tabs { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        .nav-tabs .nav-link { border-radius: 5px 5px 0 0; }
         .nav-tabs .nav-link.locked-tab { color: #6c757d; cursor: not-allowed; }
         .code-block { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
         .question-card { margin-bottom: 20px; padding: 15px; border-left: 4px solid #002b5c; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .header-institucional { text-align: center; margin-bottom: 40px; padding: 30px 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 5px solid #002b5c; }
-        .header-institucional img { height: 130px; margin-bottom: 20px; }
+        .header-institucional { text-align: center; margin-bottom: 30px; padding: 30px 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-top: 5px solid #002b5c; }
+        .header-institucional img { height: 120px; margin-bottom: 15px; }
         .header-institucional h4 { color: #002b5c; font-weight: bold; margin-bottom: 5px;}
         .header-institucional h5 { color: #444; font-size: 1.1rem; margin-bottom: 5px; }
         .header-institucional h6 { color: #666; font-size: 1rem; margin-bottom: 10px; }
@@ -22,7 +24,7 @@
         .text-primary { color: #002b5c !important; }
         .btn-primary { background-color: #002b5c; border-color: #002b5c; }
         .btn-primary:hover { background-color: #001a38; border-color: #001a38; }
-        .scenario-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 15px; font-size: 0.95rem; }
+        .scenario-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 15px; font-size: 0.95rem; border-left: 3px solid #6c757d; }
     </style>
 </head>
 <body>
@@ -33,29 +35,26 @@
         <img src="assets/escudo_azul.png" alt="Escudo Universidad de La Sabana">
         <h4>Facultad de Ingeniería</h4>
         <h5>Departamento de Gestión e Infraestructura</h5>
-        <h6>Optimización y analítica</h6>
+        <h6>Optimización y Analítica Avanzada</h6>
         <span class="badge bg-secondary" style="font-size: 0.9rem;">2026-2</span>
     </div>
 
-    <h2 class="mb-4 text-center" style="color: #002b5c; font-weight: bold;">Taller Práctico: Modelado Matemático PLEM</h2>
-    <p class="text-center mb-4">Resuelva los siguientes casos de estudio en su cuaderno o software de preferencia y tome la decisión directiva correcta para desbloquear el siguiente nivel.</p>
+    <h2 class="mb-3 text-center" style="color: #002b5c; font-weight: bold;">Taller Práctico PLEM: Modelado y Casos Gerenciales</h2>
+    <p class="text-center mb-4 text-muted">Resuelva cada modelo matemático y justifique su decisión operativa para desbloquear los niveles de alta complejidad.</p>
     
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active fw-bold" id="ejemplo-tab" data-bs-toggle="tab" data-bs-target="#ejemplo" type="button" role="tab">Ejemplo Magistral</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold" id="nivel1-tab" data-bs-toggle="tab" data-bs-target="#nivel1" type="button" role="tab" style="color: #495057;">Nivel 1</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link locked-tab fw-bold" id="nivel2-tab" data-bs-toggle="tab" data-bs-target="#nivel2" type="button" role="tab" disabled>Nivel 2</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link locked-tab fw-bold" id="nivel3-tab" data-bs-toggle="tab" data-bs-target="#nivel3" type="button" role="tab" disabled>Nivel 3</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link locked-tab fw-bold" id="nivel4-tab" data-bs-toggle="tab" data-bs-target="#nivel4" type="button" role="tab" disabled>Nivel 4</button>
-        </li>
+    <!-- Pestañas navegables con scroll horizontal -->
+    <ul class="nav nav-tabs shadow-sm" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active fw-bold" id="ejemplo-tab" data-bs-toggle="tab" data-bs-target="#ejemplo" type="button" role="tab">Ejemplo</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link fw-bold" id="nivel1-tab" data-bs-toggle="tab" data-bs-target="#nivel1" type="button" role="tab" style="color: #495057;">Nivel 1</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel2-tab" data-bs-toggle="tab" data-bs-target="#nivel2" type="button" role="tab" disabled>Nivel 2</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel3-tab" data-bs-toggle="tab" data-bs-target="#nivel3" type="button" role="tab" disabled>Nivel 3</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel4-tab" data-bs-toggle="tab" data-bs-target="#nivel4" type="button" role="tab" disabled>Nivel 4</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel5-tab" data-bs-toggle="tab" data-bs-target="#nivel5" type="button" role="tab" disabled>Nivel 5</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel6-tab" data-bs-toggle="tab" data-bs-target="#nivel6" type="button" role="tab" disabled>Nivel 6</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel7-tab" data-bs-toggle="tab" data-bs-target="#nivel7" type="button" role="tab" disabled>Nivel 7</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel8-tab" data-bs-toggle="tab" data-bs-target="#nivel8" type="button" role="tab" disabled>Nivel 8</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel9-tab" data-bs-toggle="tab" data-bs-target="#nivel9" type="button" role="tab" disabled>Nivel 9</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel10-tab" data-bs-toggle="tab" data-bs-target="#nivel10" type="button" role="tab" disabled>Nivel 10</button></li>
     </ul>
 
     <div class="tab-content border border-top-0 bg-white p-4 shadow-sm" id="myTabContent" style="border-radius: 0 0 8px 8px;">
@@ -64,10 +63,9 @@
         <div class="tab-pane fade show active" id="ejemplo" role="tabpanel">
             <h3 class="mb-3 text-primary">Restricciones "Uno u otro" (Either-Or) con Penalización Big M</h3>
             <div class="scenario-box">
-                <p><strong>Problema:</strong> Una empresa fabrica dos productos (\(x_1\) y \(x_2\)). Debe procesarlos obligatoriamente en la Máquina A <strong>o</strong> en la Máquina B, pero no en ambas por temas de incompatibilidad. La Máquina A tiene una restricción de tiempo de \(2x_1 + x_2 \le 100\), y la B de \(x_1 + 3x_2 \le 90\). Maximizar beneficio \(Z = 10x_1 + 15x_2\).</p>
+                <p><strong>Problema:</strong> Una empresa fabrica dos productos (\(x_1\) y \(x_2\)). Debe procesarlos obligatoriamente en la Máquina A <strong>o</strong> en la Máquina B, pero no en ambas por incompatibilidad. La Máquina A tiene una restricción de tiempo de \(2x_1 + x_2 \le 100\), y la B de \(x_1 + 3x_2 \le 90\). Maximizar beneficio \(Z = 10x_1 + 15x_2\).</p>
             </div>
-            
-            <h5 class="mt-4 text-primary">Formulación Matemática</h5>
+            <h5 class="mt-3 text-primary">Formulación Matemática</h5>
             <p>Sea \(y \in \{0, 1\}\) donde \(y=1\) activa la Máquina A, y \(y=0\) la Máquina B. Usamos un número muy grande \(M\).</p>
             <ul>
                 <li><strong>F.O:</strong> \(\max Z = 10x_1 + 15x_2\)</li>
@@ -76,174 +74,301 @@
                 <li>\(x_1 + 3x_2 \le 90 + My\)</li>
                 <li>\(x_1, x_2 \ge 0; \quad y \in \{0, 1\}\)</li>
             </ul>
-
-            <h5 class="mt-4 text-primary">Código Python (PuLP)</h5>
-            <pre class="code-block"><code>import pulp
-
-prob = pulp.LpProblem("Either_Or_Problem", pulp.LpMaximize)
-x1 = pulp.LpVariable('x1', lowBound=0, cat='Continuous')
-x2 = pulp.LpVariable('x2', lowBound=0, cat='Continuous')
-y = pulp.LpVariable('y', cat='Binary')
-
-M = 10000
-prob += 10 * x1 + 15 * x2, "Beneficio"
-prob += 2 * x1 + x2 <= 100 + M * (1 - y), "Maq_A"
-prob += x1 + 3 * x2 <= 90 + M * y, "Maq_B"
-
-prob.solve()
-print("x1 =", pulp.value(x1), "| x2 =", pulp.value(x2), "| Beneficio =", pulp.value(prob.objective))</code></pre>
-            <button class="btn btn-primary mt-4 px-4 py-2" onclick="document.getElementById('nivel1-tab').click()">¡Comenzar Taller Práctico!</button>
+            <button class="btn btn-primary mt-3 px-4 py-2" onclick="document.getElementById('nivel1-tab').click()">¡Comenzar Taller Práctico!</button>
         </div>
 
         <!-- ================= NIVEL 1 ================= -->
         <div class="tab-pane fade" id="nivel1" role="tabpanel">
-            <h3 class="text-primary mb-3">Nivel 1: Presupuesto de Capital y Carga Entera</h3>
-            <p>Resuelva los modelos matemáticos y seleccione la decisión operativa óptima.</p>
+            <h3 class="text-primary mb-3">Nivel 1: Presupuesto de Capital</h3>
             <form id="form-nivel1">
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 1 (Presupuesto de Capital con dependencias lógicas):</strong> Una firma dispone de un presupuesto de \$100M para invertir en 4 proyectos binarios. 
-                        <ul>
-                            <li><strong>P1:</strong> Costo \$40M, VPN \$50M.</li>
-                            <li><strong>P2:</strong> Costo \$50M, VPN \$65M.</li>
-                            <li><strong>P3:</strong> Costo \$30M, VPN \$40M.</li>
-                            <li><strong>P4:</strong> Costo \$20M, VPN \$30M.</li>
-                        </ul>
-                        <strong>Restricción técnica:</strong> El proyecto P2 contiene tecnología complementaria y <em>solo puede ejecutarse si el proyecto P1 es seleccionado previamente</em> (\(x_2 \le x_1\)).
+                        <strong>Escenario 1 (Dependencias lógicas):</strong> Presupuesto de \$100M para 4 proyectos binarios. 
+                        P1 (Costo \$40M, VPN \$50M). P2 (Costo \$50M, VPN \$65M). P3 (Costo \$30M, VPN \$40M). P4 (Costo \$20M, VPN \$30M). 
+                        <strong>Restricción:</strong> El P2 <em>solo puede ejecutarse si el P1 es seleccionado</em> (\(x_2 \le x_1\)).
                     </div>
-                    <p><strong>1. Formule y resuelva el modelo. ¿Cuál es el portafolio óptimo para la junta directiva?</strong></p>
-                    <label><input type="radio" name="q1" value="a"> Invertir en P1 y P2, ya que P2 tiene el mayor VPN individual, obteniendo un VPN total de \$115M (Presupuesto \$90M).</label><br>
-                    <label><input type="radio" name="q1" value="b"> Invertir en P1, P3 y P4, sacrificando el P2 para incorporar más proyectos, logrando el máximo VPN global de \$120M (Presupuesto \$90M).</label><br>
-                    <label><input type="radio" name="q1" value="c"> Invertir en P2 y P3, obteniendo un VPN total de \$105M (Presupuesto \$80M).</label>
+                    <p><strong>1. ¿Cuál es el portafolio óptimo?</strong></p>
+                    <label><input type="radio" name="q1" value="a"> Invertir en P1 y P2 (VPN \$115M, Costo \$90M).</label><br>
+                    <label><input type="radio" name="q1" value="b"> Invertir en P1, P3 y P4 (VPN \$120M, Costo \$90M).</label><br>
+                    <label><input type="radio" name="q1" value="c"> Invertir en P2 y P3 (VPN \$105M, Costo \$80M).</label>
                 </div>
-
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 2 (Knapsack Entero con cotas):</strong> Un buque carguero tiene una capacidad máxima de 15 toneladas. Existen 3 tipos de contenedores disponibles (variables enteras, máximo 2 contenedores de cada tipo por reglas de aduana).
-                        <ul>
-                            <li><strong>Tipo X:</strong> Peso 4 ton, Ganancia \$10k.</li>
-                            <li><strong>Tipo Y:</strong> Peso 5 ton, Ganancia \$13k.</li>
-                            <li><strong>Tipo Z:</strong> Peso 7 ton, Ganancia \$15k.</li>
-                        </ul>
+                        <strong>Escenario 2 (Knapsack Entero):</strong> Buque carguero con capacidad de 15 ton. Existen 3 tipos de contenedores (máx 2 de cada tipo). 
+                        Tipo X (4 ton, G=\$10k), Tipo Y (5 ton, G=\$13k), Tipo Z (7 ton, G=\$15k).
                     </div>
-                    <p><strong>2. Al maximizar la ganancia sin exceder las 15 toneladas, ¿cuál es el manifiesto de carga óptimo?</strong></p>
-                    <label><input type="radio" name="q2" value="a"> Embarcar 1 contenedor X y 2 contenedores Y, logrando una ganancia de \$36k ocupando 14 toneladas.</label><br>
-                    <label><input type="radio" name="q2" value="b"> Embarcar 2 contenedores X y 1 contenedor Z, logrando una ganancia de \$35k ocupando 15 toneladas exactas.</label><br>
-                    <label><input type="radio" name="q2" value="c"> Embarcar 3 contenedores Y, logrando una ganancia de \$39k ocupando 15 toneladas.</label>
+                    <p><strong>2. Al maximizar la ganancia, ¿cuál es la carga óptima?</strong></p>
+                    <label><input type="radio" name="q2" value="a"> 1 X y 2 Y (Ganancia \$36k, Peso 14t).</label><br>
+                    <label><input type="radio" name="q2" value="b"> 2 X y 1 Z (Ganancia \$35k, Peso 15t).</label><br>
+                    <label><input type="radio" name="q2" value="c"> 3 Y (Ganancia \$39k, Peso 15t).</label>
                 </div>
                 <button type="button" class="btn btn-success px-4" onclick="checkLevel(1)">Validar Nivel 1</button>
-                <div id="feedback1" class="mt-3 text-danger fw-bold fs-5"></div>
+                <div id="feedback1" class="mt-3 text-danger fw-bold"></div>
             </form>
         </div>
 
         <!-- ================= NIVEL 2 ================= -->
         <div class="tab-pane fade" id="nivel2" role="tabpanel">
-            <h3 class="text-primary mb-3">Nivel 2: Cargos Fijos y Restricciones "Either-Or"</h3>
+            <h3 class="text-primary mb-3">Nivel 2: Cargos Fijos y Either-Or</h3>
             <form id="form-nivel2">
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 3 (Problema de Cargo Fijo):</strong> Una planta puede manufacturar dos artículos.
-                        <ul>
-                            <li><strong>Artículo 1:</strong> Costo fijo de preparación (setup) \$200, Ganancia neta operativa \$20/unidad. Requiere 1 hora de máquina por unidad.</li>
-                            <li><strong>Artículo 2:</strong> Costo fijo de preparación \$400, Ganancia neta operativa \$30/unidad. Requiere 2 horas de máquina por unidad.</li>
-                        </ul>
-                        La capacidad máxima del recurso de maquinaria es de 50 horas. La función objetivo maximiza la (Ganancia operativa - Costos Fijos).
+                        <strong>Escenario 3 (Cargo Fijo):</strong> Artículo 1 (Setup \$200, Ganancia \$20/u, 1h máquina). Artículo 2 (Setup \$400, Ganancia \$30/u, 2h máquina). Capacidad: 50h. Maximizar (Ganancia - Setup).
                     </div>
-                    <p><strong>3. Al formular el modelo continuo con costos fijos binarios, ¿cuál es el plan maestro de producción óptimo?</strong></p>
-                    <label><input type="radio" name="q3" value="a"> Producir exclusivamente 50 unidades del Artículo 1, obteniendo una utilidad final de \$800.</label><br>
-                    <label><input type="radio" name="q3" value="b"> Producir 25 unidades del Artículo 2, obteniendo una utilidad final de \$350.</label><br>
-                    <label><input type="radio" name="q3" value="c"> Producir una mezcla: 10 unidades del Artículo 1 y 20 unidades del Artículo 2 para diversificar la producción, obteniendo una utilidad de \$200.</label>
+                    <p><strong>3. ¿Cuál es el plan maestro de producción óptimo?</strong></p>
+                    <label><input type="radio" name="q3" value="a"> Producir solo 50 uds de Artículo 1 (Utilidad \$800).</label><br>
+                    <label><input type="radio" name="q3" value="b"> Producir solo 25 uds de Artículo 2 (Utilidad \$350).</label><br>
+                    <label><input type="radio" name="q3" value="c"> Producir 10 uds de Art 1 y 20 uds de Art 2 (Utilidad \$200).</label>
                 </div>
-
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 4 (Restricciones Mutuamente Excluyentes con Lote Mínimo):</strong> Una destilería debe decidir procesar usando el <em>Método A</em> o el <em>Método B</em> (no ambos).
-                        <ul>
-                            <li>El Método A rinde 3 litros de biocombustible por ciclo, y requiere un tamaño de producción de <strong>al menos 500 litros</strong> para ser termodinámicamente estable.</li>
-                            <li>El Método B rinde 4 litros por ciclo, y requiere un tamaño de <strong>al menos 700 litros</strong>.</li>
-                        </ul>
-                        Sin embargo, un estudio de mercado demuestra que la demanda <strong>máxima posible para la planta es de 600 litros</strong> en total. 
+                        <strong>Escenario 4 (Lote Mínimo):</strong> Método A (rinde 3 L/ciclo, requiere lote mínimo de 500 L). Método B (rinde 4 L/ciclo, requiere lote mínimo de 700 L). Restricción de mercado: Demanda máxima 600 L. 
                     </div>
-                    <p><strong>4. Modelando el problema con variables binarias (\(y_A, y_B\)) y la respectiva M grande para la restricción de demanda, ¿qué decisión matemática forzará el algoritmo?</strong></p>
-                    <label><input type="radio" name="q4" value="a"> Activar el Método A (\(y_A=1, y_B=0\)), ya que su lote mínimo de 500 litros es el único compatible lógicamente con la cota superior del mercado de 600 litros.</label><br>
-                    <label><input type="radio" name="q4" value="b"> Activar el Método B (\(y_B=1\)) y producir 700 litros, asumiendo un costo de inventario para los 100 litros restantes.</label><br>
-                    <label><input type="radio" name="q4" value="c"> El modelo resultará matemáticamente infactible bajo cualquier escenario.</label>
+                    <p><strong>4. ¿Qué decisión matemática fuerza el algoritmo?</strong></p>
+                    <label><input type="radio" name="q4" value="a"> Activar Método A (\(y_A=1, y_B=0\)) y producir entre 500 y 600 L.</label><br>
+                    <label><input type="radio" name="q4" value="b"> Activar Método B (\(y_B=1\)) y producir 700 L, asumiendo inventario.</label><br>
+                    <label><input type="radio" name="q4" value="c"> El modelo resultará infactible.</label>
                 </div>
                 <button type="button" class="btn btn-success px-4" onclick="checkLevel(2)">Validar Nivel 2</button>
-                <div id="feedback2" class="mt-3 text-danger fw-bold fs-5"></div>
+                <div id="feedback2" class="mt-3 text-danger fw-bold"></div>
             </form>
         </div>
 
         <!-- ================= NIVEL 3 ================= -->
         <div class="tab-pane fade" id="nivel3" role="tabpanel">
-            <h3 class="text-primary mb-3">Nivel 3: Diseño de Infraestructura Espacial</h3>
+            <h3 class="text-primary mb-3">Nivel 3: Diseño Espacial</h3>
             <form id="form-nivel3">
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 5 (Set Covering Problem):</strong> Un municipio debe cubrir 5 zonas críticas (Z1 a Z5) construyendo estaciones de ambulancias. La matriz de cobertura es la siguiente:
-                        <ul>
-                            <li>Estación 1 (Costo \$50M) cubre Z1 y Z2.</li>
-                            <li>Estación 2 (Costo \$40M) cubre Z2 y Z3.</li>
-                            <li>Estación 3 (Costo \$70M) cubre Z1, Z3 y Z4.</li>
-                            <li>Estación 4 (Costo \$60M) cubre Z4 y Z5.</li>
-                            <li>Estación 5 (Costo \$80M) cubre Z3, Z4 y Z5.</li>
-                        </ul>
+                        <strong>Escenario 5 (Set Covering):</strong> Cubrir 5 zonas. E1 (\$50M, cubre Z1,Z2). E2 (\$40M, cubre Z2,Z3). E3 (\$70M, cubre Z1,Z3,Z4). E4 (\$60M, cubre Z4,Z5). E5 (\$80M, cubre Z3,Z4,Z5).
                     </div>
-                    <p><strong>5. Evaluando las restricciones lógicas (\(\sum_{j} a_{ij} x_j \ge 1\)), ¿cuál es el plan de infraestructura de costo mínimo que garantiza cobertura total a las 5 zonas?</strong></p>
-                    <label><input type="radio" name="q5" value="a"> Construir las estaciones 1 y 5, logrando cobertura total con una inversión de \$130M.</label><br>
-                    <label><input type="radio" name="q5" value="b"> Construir las estaciones 1, 2 y 4, logrando cobertura total con una inversión de \$150M.</label><br>
-                    <label><input type="radio" name="q5" value="c"> Construir las estaciones 3, 2 y 4, generando redundancia con una inversión de \$170M.</label>
+                    <p><strong>5. ¿Cuál es el plan de infraestructura de costo mínimo?</strong></p>
+                    <label><input type="radio" name="q5" value="a"> Construir E1 y E5 (Inversión \$130M).</label><br>
+                    <label><input type="radio" name="q5" value="b"> Construir E1, E2 y E4 (Inversión \$150M).</label><br>
+                    <label><input type="radio" name="q5" value="c"> Construir E3, E2 y E4 (Inversión \$170M).</label>
                 </div>
-
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 6 (Facility Location Capacitado):</strong> Se debe satisfacer una demanda agregada de <strong>1000 unidades</strong>. Hay 3 plantas posibles para abrir:
-                        <ul>
-                            <li><strong>Planta 1:</strong> Costo fijo de apertura \$1000. Costo variable \$2.0/unidad. Capacidad Máxima: 600.</li>
-                            <li><strong>Planta 2:</strong> Costo fijo de apertura \$1500. Costo variable \$1.5/unidad. Capacidad Máxima: 800.</li>
-                            <li><strong>Planta 3:</strong> Costo fijo de apertura \$500. Costo variable \$3.0/unidad. Capacidad Máxima: 500.</li>
-                        </ul>
+                        <strong>Escenario 6 (Facility Location):</strong> Demanda 1000 uds. 
+                        P1 (Apertura \$1000, CV \$2.0, Cap 600). P2 (Apertura \$1500, CV \$1.5, Cap 800). P3 (Apertura \$500, CV \$3.0, Cap 500).
                     </div>
-                    <p><strong>6. ¿Qué plantas deben abrirse y cómo debe distribuirse la producción para minimizar los Costos Totales (Fijos + Variables)?</strong></p>
-                    <label><input type="radio" name="q6" value="a"> Abrir las Plantas 2 y 3. Operar la Planta 2 al máximo (800) y pedir 200 a la Planta 3, logrando el costo mínimo de \$3800.</label><br>
-                    <label><input type="radio" name="q6" value="b"> Abrir las Plantas 1 y 3. Operar la Planta 1 al máximo (600) y pedir 400 a la Planta 3, logrando un costo de \$3900.</label><br>
-                    <label><input type="radio" name="q6" value="c"> Abrir las Plantas 1 y 2, para aprovechar los menores costos variables, operando la Planta 2 al máximo (800) y 200 en la Planta 1, con un costo total de \$4100.</label>
+                    <p><strong>6. ¿Qué plantas deben abrirse para minimizar Costos Totales?</strong></p>
+                    <label><input type="radio" name="q6" value="a"> Abrir P2 y P3. (Costo \$3800).</label><br>
+                    <label><input type="radio" name="q6" value="b"> Abrir P1 y P3. (Costo \$3900).</label><br>
+                    <label><input type="radio" name="q6" value="c"> Abrir P1 y P2. (Costo \$4100).</label>
                 </div>
                 <button type="button" class="btn btn-success px-4" onclick="checkLevel(3)">Validar Nivel 3</button>
-                <div id="feedback3" class="mt-3 text-danger fw-bold fs-5"></div>
+                <div id="feedback3" class="mt-3 text-danger fw-bold"></div>
             </form>
         </div>
 
         <!-- ================= NIVEL 4 ================= -->
         <div class="tab-pane fade" id="nivel4" role="tabpanel">
-            <h3 class="text-primary mb-3">Nivel 4: Optimización Integrada (Redes y Scheduling)</h3>
+            <h3 class="text-primary mb-3">Nivel 4: Ruteo y Scheduling</h3>
             <form id="form-nivel4">
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 7 (Traveling Salesperson Problem - Subtours):</strong> Un agente debe visitar 4 nodos asimétricos (A, B, C, D) iniciando y terminando en A. Se define \(x_{ij}=1\) si el nodo \(j\) se visita inmediatamente después de \(i\). Al relajar las restricciones de eliminación de subtours (MTZ) y correr solo como modelo de Asignación, la matriz arroja: \(x_{AB}=1, x_{BA}=1\) y \(x_{CD}=1, x_{DC}=1\). Todos los demás \(x_{ij}=0\).
+                        <strong>Escenario 7 (Subtours en TSP):</strong> Un modelo de asignación relaja las restricciones de eliminación de subtours (MTZ). La matriz arroja \(x_{AB}=1, x_{BA}=1\) y \(x_{CD}=1, x_{DC}=1\).
                     </div>
-                    <p><strong>7. ¿Qué anomalía física demuestra este resultado matemático y cuál es su implicación gerencial?</strong></p>
-                    <label><input type="radio" name="q7" value="a"> Demuestra que la ruta óptima cruza el mismo camino dos veces para ahorrar costos de transporte.</label><br>
-                    <label><input type="radio" name="q7" value="b"> Revela la formación de dos ciclos cerrados inconexos (A-B-A y C-D-C), indicando que el agente no visitó toda la red continua, haciendo imperativo activar las restricciones lógicas \(u_i - u_j + n x_{ij} \le n - 1\).</label><br>
-                    <label><input type="radio" name="q7" value="c"> Indica que el problema carece de solución matemática debido a la asimetría de las distancias.</label>
+                    <p><strong>7. ¿Qué anomalía física demuestra este resultado?</strong></p>
+                    <label><input type="radio" name="q7" value="a"> La ruta cruza el mismo camino dos veces.</label><br>
+                    <label><input type="radio" name="q7" value="b"> Se forman dos ciclos cerrados inconexos, indicando que el agente no visitó toda la red continua de forma legal.</label><br>
+                    <label><input type="radio" name="q7" value="c"> Asimetría en las distancias hace el modelo infactible.</label>
                 </div>
-
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 8 (Job Shop Scheduling):</strong> Dos trabajos de ensamble (J1 y J2) deben procesarse en una misma máquina especializada <strong>sin solaparse temporalmente</strong>.
-                        <ul>
-                            <li>J1 toma 3 horas en procesarse y tiene un tiempo de entrega límite (Deadline) estricto de <strong>4 horas</strong> desde el inicio.</li>
-                            <li>J2 toma 4 horas en procesarse.</li>
-                        </ul>
-                        El modelo usa disyunción (Big M) para la restricción: o J1 precede a J2, o J2 precede a J1.
+                        <strong>Escenario 8 (Job Shop):</strong> Trabajos J1 (Toma 3h, Deadline estricto en hora 4) y J2 (Toma 4h). Se procesan en la misma máquina sin solaparse.
                     </div>
-                    <p><strong>8. Dado el Deadline estricto, ¿cuál es la programación secuencial factible y en qué hora termina el proceso global (Makespan)?</strong></p>
-                    <label><input type="radio" name="q8" value="a"> J2 debe preceder a J1. El proceso completo termina en la hora 8, incurriendo en una penalización por romper el Deadline de J1.</label><br>
-                    <label><input type="radio" name="q8" value="b"> J1 obligatoriamente precede a J2 (J1 termina en la hora 3 cumpliendo el Deadline). La máquina luego procesa J2, finalizando todo el sistema en la hora 7.</label><br>
-                    <label><input type="radio" name="q8" value="c"> La máquina procesará ambos trabajos simultáneamente cortando su capacidad a la mitad para evitar el uso del Big M.</label>
+                    <p><strong>8. ¿Cuál es la programación factible y el Makespan?</strong></p>
+                    <label><input type="radio" name="q8" value="a"> J2 precede a J1. Makespan 8h, rompiendo el deadline de J1.</label><br>
+                    <label><input type="radio" name="q8" value="b"> J1 precede a J2. Makespan de 7 horas, cumpliendo factibilidad temporal.</label><br>
+                    <label><input type="radio" name="q8" value="c"> Procesamiento simultáneo cortando la capacidad.</label>
                 </div>
                 <button type="button" class="btn btn-success px-4" onclick="checkLevel(4)">Validar Nivel 4</button>
-                <div id="feedback4" class="mt-3 text-danger fw-bold fs-5"></div>
+                <div id="feedback4" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 5 ================= -->
+        <div class="tab-pane fade" id="nivel5" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 5: Apertura de Plantas y Transporte Básico</h3>
+            <form id="form-nivel5">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 9 (Costos Fijos vs Transporte):</strong> Atendemos a un Mercado que exige exactamente 80 unidades. Evaluamos dos Plantas (solo podemos abrir una o ambas):
+                        <ul>
+                            <li><strong>Planta A:</strong> Costo fijo apertura \$100, Costo de envío \$2/unidad.</li>
+                            <li><strong>Planta B:</strong> Costo fijo apertura \$200, Costo de envío \$1/unidad.</li>
+                        </ul>
+                    </div>
+                    <p><strong>9. ¿Qué planta(s) debe(n) abrirse para minimizar los costos totales de la red?</strong></p>
+                    <label><input type="radio" name="q9" value="a"> Abrir solo Planta A (Costo total \$260).</label><br>
+                    <label><input type="radio" name="q9" value="b"> Abrir solo Planta B (Costo total \$280).</label><br>
+                    <label><input type="radio" name="q9" value="c"> Abrir ambas plantas enviando 40 uds de cada una (Costo total \$420).</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 10 (Restricción Conjunta de Plantas):</strong> Hay 3 Plantas posibles (P1, P2, P3). Para abastecer una demanda de 150 unidades evaluamos:
+                        <ul>
+                            <li><strong>P1:</strong> CF \$500, Capacidad 100, Costo transporte \$1/u.</li>
+                            <li><strong>P2:</strong> CF \$300, Capacidad 60, Costo transporte \$2/u.</li>
+                        </ul>
+                        Para cubrir 150 uds es obligatorio usar más de una planta.
+                    </div>
+                    <p><strong>10. Si el modelo matemático exige \( \sum y_i \le 2 \) (abrir máximo 2 plantas), ¿cuál es el costo mínimo de abastecimiento operando P1 y P2?</strong></p>
+                    <label><input type="radio" name="q10" value="a"> \$800 (Solo los costos fijos).</label><br>
+                    <label><input type="radio" name="q10" value="b"> \$1000 (Apertura P1+P2 y saturando la más económica P1 con 100u y P2 con 50u).</label><br>
+                    <label><input type="radio" name="q10" value="c"> El problema es infactible.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(5)">Validar Nivel 5</button>
+                <div id="feedback5" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 6 ================= -->
+        <div class="tab-pane fade" id="nivel6" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 6: Transbordo y Mezcla (Blending)</h3>
+            <form id="form-nivel6">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 11 (Uso de Centros de Transbordo):</strong> Para enviar 100 unidades de la Fábrica al Cliente hay dos vías. 
+                        Vía directa: \$5/u. Vía transbordo (usando un CD intermedio): Costo Fijo de usar el CD \$100, más costo de envío por el CD de \$2/u en total.
+                    </div>
+                    <p><strong>11. Modelando el nodo CD con una variable binaria de activación, ¿cuál vía elige el optimizador?</strong></p>
+                    <label><input type="radio" name="q11" value="a"> Vía Directa (Costo \$500).</label><br>
+                    <label><input type="radio" name="q11" value="b"> Vía Transbordo (Costo \$300).</label><br>
+                    <label><input type="radio" name="q11" value="c"> Enviar 50uds por cada vía para equilibrar la red.</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 12 (Problema de Mezcla con Variables Continuas):</strong> Una planta procesadora debe generar exactamente 100 toneladas de una aleación con al menos un <strong>70% de pureza</strong>. Dispone de:
+                        <ul>
+                            <li><strong>Material 1:</strong> 50% pureza, Costo \$10/ton.</li>
+                            <li><strong>Material 2:</strong> 90% pureza, Costo \$20/ton.</li>
+                        </ul>
+                    </div>
+                    <p><strong>12. Formule el balance de masa \(0.5x_1 + 0.9x_2 \ge 0.7(100)\) sujeto a \(x_1 + x_2 = 100\). ¿Cuál es la receta de costo mínimo?</strong></p>
+                    <label><input type="radio" name="q12" value="a"> 50 toneladas de Material 1 y 50 toneladas de Material 2.</label><br>
+                    <label><input type="radio" name="q12" value="b"> 100 toneladas de Material 2 para asegurar la pureza de sobra.</label><br>
+                    <label><input type="radio" name="q12" value="c"> 70 toneladas de Material 1 y 30 toneladas de Material 2.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(6)">Validar Nivel 6</button>
+                <div id="feedback6" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 7 ================= -->
+        <div class="tab-pane fade" id="nivel7" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 7: Apertura de Líneas de Producción y Turnos</h3>
+            <form id="form-nivel7">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 13 (Apertura de Líneas):</strong> Una planta debe decidir en cuál de sus 2 líneas de producción procesar un pedido de 100 unidades. No se permite fraccionar el pedido (se hace en una o en otra).
+                        <ul>
+                            <li><strong>Línea A (Alta velocidad):</strong> Setup (Arranque) \$500, Costo variable \$1/unidad.</li>
+                            <li><strong>Línea B (Convencional):</strong> Setup (Arranque) \$200, Costo variable \$3/unidad.</li>
+                        </ul>
+                    </div>
+                    <p><strong>13. ¿Qué línea se debe activar para minimizar el costo?</strong></p>
+                    <label><input type="radio" name="q13" value="a"> Línea A (Costo total \$600).</label><br>
+                    <label><input type="radio" name="q13" value="b"> Línea B (Costo total \$500).</label><br>
+                    <label><input type="radio" name="q13" value="c"> No importa, ambas cuestan lo mismo.</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 14 (Variables Enteras en Turnos):</strong> Una línea de empaque requiere definir la cantidad de turnos de trabajo (variables enteras \(k \in \mathbb{Z}^+\)). Cada turno procesa 80 unidades. Se debe cumplir una demanda estricta de 200 unidades. 
+                    </div>
+                    <p><strong>14. Si el modelo fuerza \( 80k \ge 200 \), ¿cuál es el valor óptimo de la variable entera \(k\)?</strong></p>
+                    <label><input type="radio" name="q14" value="a"> \(k = 3\) turnos, generando una capacidad ociosa de 40 unidades.</label><br>
+                    <label><input type="radio" name="q14" value="b"> \(k = 2.5\) turnos.</label><br>
+                    <label><input type="radio" name="q14" value="c"> \(k = 2\) turnos, y posponer las 40 unidades faltantes.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(7)">Validar Nivel 7</button>
+                <div id="feedback7" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 8 ================= -->
+        <div class="tab-pane fade" id="nivel8" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 8: Líneas Complejas y Costos de Changeover</h3>
+            <form id="form-nivel8">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 15 (Costos Cruzados - Changeover):</strong> Hay que producir el Producto X y el Producto Y. Si se enciende una línea dedicada para un producto, el Setup cuesta \$100. 
+                        Si se utiliza una <strong>sola línea flexible</strong> para procesar ambos secuencialmente, el Setup de arranque es \$100, y el cambio de molde (Changeover) de X a Y cuesta \$50 adicionales.
+                    </div>
+                    <p><strong>15. Asumiendo que el costo variable es despreciable, ¿cuál configuración de líneas minimiza los costos fijos totales?</strong></p>
+                    <label><input type="radio" name="q15" value="a"> Usar 1 sola línea flexible con cambio de molde (Costo Total \$150).</label><br>
+                    <label><input type="radio" name="q15" value="b"> Abrir 2 líneas dedicadas, una para cada producto (Costo Total \$200).</label><br>
+                    <label><input type="radio" name="q15" value="c"> Imposible determinar sin conocer la demanda exacta.</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 16 (Exclusión de Líneas por Energía):</strong> Por límites de subestación eléctrica, si la Línea 1 (Alto consumo, Capacidad 400 uds) se abre, la Línea 2 (Bajo consumo, Capacidad 600 uds) <strong>debe permanecer cerrada</strong>. Esto se modela como \(y_1 + y_2 \le 1\). La demanda a cubrir es de 500 unidades. 
+                    </div>
+                    <p><strong>16. ¿Qué decisión asegura la factibilidad matemática del sistema?</strong></p>
+                    <label><input type="radio" name="q16" value="a"> Abrir Línea 1 e incumplir la demanda en 100 unidades.</label><br>
+                    <label><input type="radio" name="q16" value="b"> Abrir la Línea 2, ya que es la única capaz de cumplir el umbral de 500 unidades respetando la exclusión (\(y_1=0, y_2=1\)).</label><br>
+                    <label><input type="radio" name="q16" value="c"> Relajar la exclusión eléctrica y abrir ambas líneas arriesgando un apagón.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(8)">Validar Nivel 8</button>
+                <div id="feedback8" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 9 ================= -->
+        <div class="tab-pane fade" id="nivel9" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 9: Integrador I (Multi-periodo e Inventarios)</h3>
+            <form id="form-nivel9">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 17 (Producción vs Inventario):</strong> Demanda: Periodo 1 (100 uds), Periodo 2 (100 uds). 
+                        Costo de Setup por periodo \$300. Costo de producción \$1/u. Costo de mantener inventario \$2/u/periodo (evaluado al final del periodo 1 para lo que pasa al 2).
+                    </div>
+                    <p><strong>17. Evalúe el Trade-off: ¿Es mejor producir cada periodo exacto a su demanda, o producir todo en el Periodo 1 y almacenar?</strong></p>
+                    <label><input type="radio" name="q17" value="a"> Producir 200 en Periodo 1 y almacenar. (Costo Total: Setup \$300 + Prod \$200 + Inv \$200 = \$700).</label><br>
+                    <label><input type="radio" name="q17" value="b"> Producir 100 en Periodo 1 y 100 en Periodo 2 (Costo Total: Setups \$600 + Prod \$200 = \$800).</label><br>
+                    <label><input type="radio" name="q17" value="c"> Producir 0 en el Periodo 1 y 200 en el Periodo 2 generando backlogs.</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 18 (Plantas, Líneas y Transbordo):</strong> La Planta 1 tiene una Línea 1 (Cap 200). La demanda global es 300. Para cubrir el faltante se puede encender una costosa Línea 2 en la misma planta, o activar un nodo de transbordo desde la Planta 2 que dispone de 100 uds ya fabricadas.
+                    </div>
+                    <p><strong>18. Si el modelo restringe que el flujo de transbordo no puede superar la capacidad remanente no fabricada por la Línea 1, ¿qué restricción lógica impone esto?</strong></p>
+                    <label><input type="radio" name="q18" value="a"> \(\text{Flujo}_{1 \to 2} = \text{Demanda}\)</label><br>
+                    <label><input type="radio" name="q18" value="b"> \(\text{Flujo}_{2 \to 1} \le \text{Demanda} - \text{Producción}_{L1}\)</label><br>
+                    <label><input type="radio" name="q18" value="c"> \(\text{Producción}_{L2} \ge \text{Flujo}_{2 \to 1}\)</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(9)">Validar Nivel 9</button>
+                <div id="feedback9" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 10 ================= -->
+        <div class="tab-pane fade" id="nivel10" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 10: Integrador II (Supply Chain End-to-End)</h3>
+            <form id="form-nivel10">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 19 (Líneas Dedicadas vs Flexibles):</strong> Una macro-planta debe entregar el Producto Alpha y Beta.
+                        Las líneas "Flexibles" hacen Alpha y Beta pero sufren un factor de ineficiencia del 20% en capacidad. La línea "Dedicada" hace solo Alpha al 100% de eficiencia, pero su costo de activación (Setup) es el triple. 
+                    </div>
+                    <p><strong>19. Cuando la demanda de Alpha experimenta un pico estacional extremo que supera la capacidad instalada de las líneas flexibles combinadas, ¿qué dinámica modela el solver binario?</strong></p>
+                    <label><input type="radio" name="q19" value="a"> Apaga las líneas flexibles y rechaza la demanda de Beta.</label><br>
+                    <label><input type="radio" name="q19" value="b"> Activa forzosamente la línea dedicada absorbiendo el alto costo de setup para garantizar la factibilidad del balance de masa, dejando las flexibles para Beta.</label><br>
+                    <label><input type="radio" name="q19" value="c"> Transforma las líneas flexibles en dedicadas ignorando la restricción de diseño.</label>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 20 (El Reto Final - Decisiones Estratégicas Multi-nivel):</strong> Un modelo maestro evalúa simultáneamente: Apertura de Plantas \(\to\) Elección de Líneas Internas \(\to\) Mezcla de Materia Prima \(\to\) Almacenamiento Temporal \(\to\) Ruteo a Centros de Distribución. 
+                    </div>
+                    <p><strong>20. ¿Por qué la conservación de flujo (Balance de Masa: Inventario Anterior + Producción + Entradas Transbordo = Demanda + Inventario Final + Salidas Transbordo) es la restricción estructural más crítica en este tipo de PLEM complejo?</strong></p>
+                    <label><input type="radio" name="q20" value="a"> Porque acopla todas las decisiones espaciales (plantas a nodos) y temporales (periodo a periodo), asegurando que el producto no aparezca ni desaparezca mágicamente, manteniendo el rigor físico de la red.</label><br>
+                    <label><input type="radio" name="q20" value="b"> Porque obliga a que los costos fijos se vuelvan continuos.</label><br>
+                    <label><input type="radio" name="q20" value="c"> Porque reduce el tiempo de cómputo del algoritmo Branch and Bound al relajar el problema entero.</label>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(10)">Validar Nivel 10</button>
+                <div id="feedback10" class="mt-3 text-danger fw-bold fs-5"></div>
             </form>
         </div>
 
@@ -252,12 +377,18 @@ print("x1 =", pulp.value(x1), "| x2 =", pulp.value(x2), "| Beneficio =", pulp.va
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Respuestas correctas calculadas desde los modelos
+    // Diccionario de respuestas para los 10 niveles
     const answers = {
         1: { q1: 'b', q2: 'a' },
         2: { q3: 'a', q4: 'a' },
         3: { q5: 'a', q6: 'a' },
-        4: { q7: 'b', q8: 'b' }
+        4: { q7: 'b', q8: 'b' },
+        5: { q9: 'a', q10: 'b' },
+        6: { q11: 'b', q12: 'a' },
+        7: { q13: 'b', q14: 'a' },
+        8: { q15: 'a', q16: 'b' },
+        9: { q17: 'a', q18: 'b' },
+        10: { q19: 'b', q20: 'a' }
     };
 
     function checkLevel(level) {
@@ -278,15 +409,19 @@ print("x1 =", pulp.value(x1), "| x2 =", pulp.value(x2), "| Beneficio =", pulp.va
             feedback.className = 'mt-3 text-success fw-bold fs-5';
             feedback.innerText = '¡Decisiones analíticas correctas! Nivel superado.';
             
-            if (level < 4) {
+            if (level < 10) {
                 let nextLevel = level + 1;
                 let nextTab = document.getElementById('nivel' + nextLevel + '-tab');
                 nextTab.disabled = false;
                 nextTab.classList.remove('locked-tab');
                 nextTab.style.color = '#002b5c';
+                
+                // Hace scroll automático de los tabs para que el nivel desbloqueado sea visible
+                nextTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                
                 setTimeout(() => nextTab.click(), 1500);
             } else {
-                feedback.innerText = '¡EXCELENTE! Has demostrado dominio en el modelado y solución de problemas PLEM.';
+                feedback.innerText = '¡MISIÓN CUMPLIDA! Has demostrado un nivel gerencial y matemático sobresaliente en PLEM.';
             }
         } else {
             feedback.className = 'mt-3 text-danger fw-bold fs-5';
