@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio MIP - Universidad de La Sabana</title>
+    <title>Laboratorio PLEM - Universidad de La Sabana</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -43,7 +43,14 @@
         <li class="nav-item" role="presentation"><button class="nav-link active fw-bold" id="ejemplo-tab" data-bs-toggle="tab" data-bs-target="#ejemplo" type="button" role="tab">Ejemplo</button></li>
         <li class="nav-item" role="presentation"><button class="nav-link fw-bold" id="nivel1-tab" data-bs-toggle="tab" data-bs-target="#nivel1" type="button" role="tab" style="color: #495057;">Nivel 1</button></li>
         <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel2-tab" data-bs-toggle="tab" data-bs-target="#nivel2" type="button" role="tab" disabled>Nivel 2</button></li>
-        <!-- Añade aquí los demás niveles (3 al 10) de la misma forma que antes -->
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel3-tab" data-bs-toggle="tab" data-bs-target="#nivel3" type="button" role="tab" disabled>Nivel 3</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel4-tab" data-bs-toggle="tab" data-bs-target="#nivel4" type="button" role="tab" disabled>Nivel 4</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel5-tab" data-bs-toggle="tab" data-bs-target="#nivel5" type="button" role="tab" disabled>Nivel 5</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel6-tab" data-bs-toggle="tab" data-bs-target="#nivel6" type="button" role="tab" disabled>Nivel 6</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel7-tab" data-bs-toggle="tab" data-bs-target="#nivel7" type="button" role="tab" disabled>Nivel 7</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel8-tab" data-bs-toggle="tab" data-bs-target="#nivel8" type="button" role="tab" disabled>Nivel 8</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel9-tab" data-bs-toggle="tab" data-bs-target="#nivel9" type="button" role="tab" disabled>Nivel 9</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link locked-tab fw-bold" id="nivel10-tab" data-bs-toggle="tab" data-bs-target="#nivel10" type="button" role="tab" disabled>Nivel 10</button></li>
     </ul>
 
     <div class="tab-content border border-top-0 bg-white p-4 shadow-sm" id="myTabContent" style="border-radius: 0 0 8px 8px;">
@@ -85,15 +92,13 @@ print(f"x1: {pulp.value(x1)}, x2: {pulp.value(x2)}, y: {pulp.value(y)}, Z: {pulp
         <div class="tab-pane fade" id="nivel1" role="tabpanel">
             <h3 class="text-primary mb-3">Nivel 1: Presupuesto de Capital</h3>
             <form id="form-nivel1">
-                <!-- PREGUNTA 1 -->
                 <div class="question-card">
                     <div class="scenario-box">
-                        <strong>Escenario 1:</strong> Presupuesto \$100M. 4 proyectos: P1(\$40M, VPN \$50M), P2(\$50M, VPN \$65M), P3(\$30M, VPN \$40M), P4(\$20M, VPN \$30M). P2 solo si P1 se ejecuta (\(x_2 \le x_1\)).
+                        <strong>Escenario 1 (Dependencias lógicas):</strong> Presupuesto \$100M. 4 proyectos: P1(\$40M, VPN \$50M), P2(\$50M, VPN \$65M), P3(\$30M, VPN \$40M), P4(\$20M, VPN \$30M). P2 solo si P1 se ejecuta (\(x_2 \le x_1\)).
                     </div>
                     <p><strong>1. ¿Cuál es el portafolio óptimo?</strong></p>
                     <label><input type="radio" name="q1" value="a"> Invertir en P1 y P2.</label><br>
                     <label><input type="radio" name="q1" value="b"> Invertir en P1, P3 y P4.</label><br>
-                    
                     <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol1')">Ver Solución Matemática y Código</button>
                     <div id="sol1" class="solucion-box">
                         <strong>Formulación:</strong><br>
@@ -112,7 +117,6 @@ p.solve()
                     </div>
                 </div>
 
-                <!-- PREGUNTA 2 -->
                 <div class="question-card">
                     <div class="scenario-box">
                         <strong>Escenario 2 (Knapsack Entero):</strong> Buque 15 ton. 3 contenedores (máx 2 c/u). Tipo X (4t, \$10k), Y (5t, \$13k), Z (7t, \$15k).
@@ -120,7 +124,6 @@ p.solve()
                     <p><strong>2. ¿Cuál es la carga óptima?</strong></p>
                     <label><input type="radio" name="q2" value="a"> 1 X y 2 Y (Ganancia \$36k).</label><br>
                     <label><input type="radio" name="q2" value="b"> 2 X y 1 Z (Ganancia \$35k).</label><br>
-                    
                     <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol2')">Ver Solución Matemática y Código</button>
                     <div id="sol2" class="solucion-box">
                         <strong>Formulación:</strong><br>
@@ -144,7 +147,588 @@ p.solve()
             </form>
         </div>
 
-        <!-- REPLICA ESTA ESTRUCTURA (div.question-card con el botón "mostrarSolucion") PARA LOS DEMÁS NIVELES HASTA EL 10 -->
+        <!-- ================= NIVEL 2 ================= -->
+        <div class="tab-pane fade" id="nivel2" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 2: Cargos Fijos y Either-Or</h3>
+            <form id="form-nivel2">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 3 (Cargo Fijo):</strong> Artículo 1 (Setup \$200, Ganancia \$20/u, 1h máquina). Artículo 2 (Setup \$400, Ganancia \$30/u, 2h máquina). Capacidad: 50h. Maximizar (Ganancia - Setup).
+                    </div>
+                    <p><strong>3. ¿Cuál es el plan de producción óptimo?</strong></p>
+                    <label><input type="radio" name="q3" value="a"> Producir solo 50 uds de Art 1 (Utilidad \$800).</label><br>
+                    <label><input type="radio" name="q3" value="b"> Producir solo 25 uds de Art 2 (Utilidad \$350).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol3')">Ver Solución Matemática y Código</button>
+                    <div id="sol3" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\max 20x_1 + 30x_2 - 200y_1 - 400y_2\)<br>
+                        \(x_1 + 2x_2 \le 50\)<br>
+                        \(x_1 \le 50y_1, \quad x_2 \le 25y_2\)<br>
+                        \(x_i \ge 0; \quad y_i \in \{0,1\}\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Fixed_Charge", pulp.LpMaximize)
+x1 = pulp.LpVariable('x1', lowBound=0)
+x2 = pulp.LpVariable('x2', lowBound=0)
+y1 = pulp.LpVariable('y1', cat='Binary')
+y2 = pulp.LpVariable('y2', cat='Binary')
+p += 20*x1 + 30*x2 - 200*y1 - 400*y2
+p += x1 + 2*x2 <= 50
+p += x1 <= 50 * y1
+p += x2 <= 25 * y2
+p.solve()
+# Óptimo: x1=50, x2=0, y1=1, y2=0 (Z = 800)</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 4 (Lote Mínimo):</strong> Método A (Lote mínimo 500 L). Método B (Lote mínimo 700 L). Restricción: Demanda máxima 600 L. Procesar solo un método.
+                    </div>
+                    <p><strong>4. ¿Qué decisión matemática fuerza el algoritmo?</strong></p>
+                    <label><input type="radio" name="q4" value="a"> Activar Método A y producir entre 500 y 600 L.</label><br>
+                    <label><input type="radio" name="q4" value="b"> Activar Método B y producir 700 L.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol4')">Ver Solución Matemática y Código</button>
+                    <div id="sol4" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\max x_A + x_B\)<br>
+                        \(500y_A \le x_A \le M y_A\)<br>
+                        \(700y_B \le x_B \le M y_B\)<br>
+                        \(x_A + x_B \le 600\)<br>
+                        \(y_A + y_B \le 1\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Min_Lot", pulp.LpMaximize)
+xa = pulp.LpVariable('xa', lowBound=0)
+xb = pulp.LpVariable('xb', lowBound=0)
+ya = pulp.LpVariable('ya', cat='Binary')
+yb = pulp.LpVariable('yb', cat='Binary')
+p += xa + xb
+p += xa >= 500 * ya; p += xa <= 1000 * ya
+p += xb >= 700 * yb; p += xb <= 1000 * yb
+p += xa + xb <= 600
+p += ya + yb <= 1
+p.solve()
+# Óptimo: ya=1, xa=600. B infactible por demanda máx 600.</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(2)">Validar Nivel 2</button>
+                <div id="feedback2" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 3 ================= -->
+        <div class="tab-pane fade" id="nivel3" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 3: Diseño Espacial</h3>
+            <form id="form-nivel3">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 5 (Set Covering):</strong> E1 (\$50M, cubre Z1,Z2). E2 (\$40M, cubre Z2,Z3). E3 (\$70M, cubre Z1,Z3,Z4). E4 (\$60M, cubre Z4,Z5). E5 (\$80M, cubre Z3,Z4,Z5).
+                    </div>
+                    <p><strong>5. ¿Cuál es el plan de infraestructura de costo mínimo?</strong></p>
+                    <label><input type="radio" name="q5" value="a"> Construir E1 y E5 (Inversión \$130M).</label><br>
+                    <label><input type="radio" name="q5" value="b"> Construir E1, E2 y E4 (Inversión \$150M).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol5')">Ver Solución Matemática y Código</button>
+                    <div id="sol5" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 50y_1 + 40y_2 + 70y_3 + 60y_4 + 80y_5\)<br>
+                        \(y_1 + y_3 \ge 1\) (Z1)<br>
+                        \(y_1 + y_2 \ge 1\) (Z2)<br>
+                        \(y_2 + y_3 + y_5 \ge 1\) (Z3)<br>
+                        \(y_3 + y_4 + y_5 \ge 1\) (Z4)<br>
+                        \(y_4 + y_5 \ge 1\) (Z5)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Set_Covering", pulp.LpMinimize)
+y = pulp.LpVariable.dicts("y", range(1,6), cat='Binary')
+p += 50*y[1] + 40*y[2] + 70*y[3] + 60*y[4] + 80*y[5]
+p += y[1] + y[3] >= 1
+p += y[1] + y[2] >= 1
+p += y[2] + y[3] + y[5] >= 1
+p += y[3] + y[4] + y[5] >= 1
+p += y[4] + y[5] >= 1
+p.solve()
+# Óptimo: y1=1, y5=1 (Costo = 130)</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 6 (Facility Location):</strong> Demanda 1000. P1(CF\$1000, CV\$2.0, Cap 600). P2(CF\$1500, CV\$1.5, Cap 800). P3(CF\$500, CV\$3.0, Cap 500).
+                    </div>
+                    <p><strong>6. ¿Qué plantas deben abrirse para minimizar Costos Totales?</strong></p>
+                    <label><input type="radio" name="q6" value="a"> Abrir P2 y P3. (Costo \$3800).</label><br>
+                    <label><input type="radio" name="q6" value="b"> Abrir P1 y P3. (Costo \$3900).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol6')">Ver Solución Matemática y Código</button>
+                    <div id="sol6" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 1000y_1 + 1500y_2 + 500y_3 + 2x_1 + 1.5x_2 + 3x_3\)<br>
+                        \(x_1 + x_2 + x_3 = 1000\)<br>
+                        \(x_1 \le 600y_1, x_2 \le 800y_2, x_3 \le 500y_3\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Fac_Location", pulp.LpMinimize)
+y = pulp.LpVariable.dicts("y", [1,2,3], cat='Binary')
+x = pulp.LpVariable.dicts("x", [1,2,3], lowBound=0)
+p += 1000*y[1] + 1500*y[2] + 500*y[3] + 2*x[1] + 1.5*x[2] + 3*x[3]
+p += x[1] + x[2] + x[3] == 1000
+p += x[1] <= 600 * y[1]
+p += x[2] <= 800 * y[2]
+p += x[3] <= 500 * y[3]
+p.solve()
+# Óptimo: y1=1, y3=1, x1=600, x3=400. Z=3900</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(3)">Validar Nivel 3</button>
+                <div id="feedback3" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 4 ================= -->
+        <div class="tab-pane fade" id="nivel4" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 4: Ruteo y Scheduling</h3>
+            <form id="form-nivel4">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 7 (Subtours TSP):</strong> Matriz relajada arroja \(x_{AB}=1, x_{BA}=1\) y \(x_{CD}=1, x_{DC}=1\).
+                    </div>
+                    <p><strong>7. ¿Qué anomalía física demuestra este resultado?</strong></p>
+                    <label><input type="radio" name="q7" value="a"> La ruta cruza el mismo camino dos veces.</label><br>
+                    <label><input type="radio" name="q7" value="b"> Se forman dos ciclos cerrados inconexos, requiriendo activar restricciones MTZ.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol7')">Ver Solución Matemática y Código</button>
+                    <div id="sol7" class="solucion-box">
+                        <strong>Formulación MTZ (Lógica):</strong><br>
+                        Para evitar subtours, se agrega la variable continua \(u_i\) (posición de visita).<br>
+                        \(u_i - u_j + n x_{ij} \le n - 1 \quad \forall i,j \ge 2, i \neq j\)<br>
+                        <strong>Código Python (Estructura MTZ):</strong>
+                        <pre class="code-block"><code>import pulp
+# Asumiendo n nodos y costos C[i][j]
+p = pulp.LpProblem("TSP_MTZ", pulp.LpMinimize)
+n = 4
+x = pulp.LpVariable.dicts("x", (range(n), range(n)), cat='Binary')
+u = pulp.LpVariable.dicts("u", range(n), lowBound=0, upBound=n-1)
+
+for i in range(1, n):
+    for j in range(1, n):
+        if i != j:
+            p += u[i] - u[j] + n * x[i][j] <= n - 1
+# Esta restricción fuerza a que exista una secuencia única conectada</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 8 (Job Shop):</strong> J1 (3h, Deadline en 4h). J2 (4h). Misma máquina sin solape.
+                    </div>
+                    <p><strong>8. ¿Cuál es la programación factible y el Makespan?</strong></p>
+                    <label><input type="radio" name="q8" value="a"> J2 precede a J1. Makespan 8h, rompiendo deadline.</label><br>
+                    <label><input type="radio" name="q8" value="b"> J1 precede a J2. Makespan 7h, cumpliendo factibilidad temporal.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol8')">Ver Solución Matemática y Código</button>
+                    <div id="sol8" class="solucion-box">
+                        <strong>Formulación Disyuntiva:</strong><br>
+                        \(t_1 + 3 \le t_2 + M(1-y)\)<br>
+                        \(t_2 + 4 \le t_1 + My\)<br>
+                        \(t_1 + 3 \le 4\) (Deadline J1)<br>
+                        \(\max Makespan \ge t_i + P_i\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Job_Shop", pulp.LpMinimize)
+t1 = pulp.LpVariable('t1', lowBound=0)
+t2 = pulp.LpVariable('t2', lowBound=0)
+ms = pulp.LpVariable('makespan', lowBound=0)
+y = pulp.LpVariable('y', cat='Binary')
+M = 100
+
+p += ms
+p += t1 + 3 <= t2 + M*(1-y)
+p += t2 + 4 <= t1 + M*y
+p += t1 + 3 <= 4  # Deadline J1
+p += ms >= t1 + 3
+p += ms >= t2 + 4
+p.solve()
+# Óptimo: t1=0, t2=3, Makespan=7</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(4)">Validar Nivel 4</button>
+                <div id="feedback4" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 5 ================= -->
+        <div class="tab-pane fade" id="nivel5" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 5: Apertura de Plantas y Transporte Básico</h3>
+            <form id="form-nivel5">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 9 (Costos Fijos vs Transporte):</strong> Demanda: 80 uds. 
+                        Planta A: CF \$100, Transporte \$2/u. Planta B: CF \$200, Transporte \$1/u.
+                    </div>
+                    <p><strong>9. ¿Qué planta(s) debe(n) abrirse?</strong></p>
+                    <label><input type="radio" name="q9" value="a"> Abrir solo Planta A (Costo total \$260).</label><br>
+                    <label><input type="radio" name="q9" value="b"> Abrir solo Planta B (Costo total \$280).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol9')">Ver Solución Matemática y Código</button>
+                    <div id="sol9" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 100y_A + 200y_B + 2x_A + 1x_B\)<br>
+                        \(x_A + x_B = 80\)<br>
+                        \(x_A \le 80y_A, \quad x_B \le 80y_B\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Plant_Transport", pulp.LpMinimize)
+ya = pulp.LpVariable('ya', cat='Binary')
+yb = pulp.LpVariable('yb', cat='Binary')
+xa = pulp.LpVariable('xa', lowBound=0)
+xb = pulp.LpVariable('xb', lowBound=0)
+
+p += 100*ya + 200*yb + 2*xa + 1*xb
+p += xa + xb == 80
+p += xa <= 80*ya
+p += xb <= 80*yb
+p.solve()
+# Óptimo: ya=1, xa=80. Costo = 260</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 10 (Restricción Conjunta de Plantas):</strong> Demanda 150. P1(CF\$500, Cap 100, CT\$1/u). P2(CF\$300, Cap 60, CT\$2/u). Restricción: \(\sum y_i \le 2\).
+                    </div>
+                    <p><strong>10. ¿Cuál es el costo mínimo de abastecimiento operando P1 y P2?</strong></p>
+                    <label><input type="radio" name="q10" value="a"> \$800 (Solo los costos fijos).</label><br>
+                    <label><input type="radio" name="q10" value="b"> \$1000 (Apertura P1+P2, P1 envía 100u, P2 envía 50u).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol10')">Ver Solución Matemática y Código</button>
+                    <div id="sol10" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 500y_1 + 300y_2 + 1x_1 + 2x_2\)<br>
+                        \(x_1 + x_2 = 150\)<br>
+                        \(x_1 \le 100y_1, \quad x_2 \le 60y_2\)<br>
+                        \(y_1 + y_2 \le 2\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Joint_Plants", pulp.LpMinimize)
+y1 = pulp.LpVariable('y1', cat='Binary')
+y2 = pulp.LpVariable('y2', cat='Binary')
+x1 = pulp.LpVariable('x1', lowBound=0)
+x2 = pulp.LpVariable('x2', lowBound=0)
+
+p += 500*y1 + 300*y2 + 1*x1 + 2*x2
+p += x1 + x2 == 150
+p += x1 <= 100*y1
+p += x2 <= 60*y2
+p += y1 + y2 <= 2
+p.solve()
+# Óptimo: y1=1, y2=1, x1=100, x2=50. Z = 1000</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(5)">Validar Nivel 5</button>
+                <div id="feedback5" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 6 ================= -->
+        <div class="tab-pane fade" id="nivel6" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 6: Transbordo y Mezcla (Blending)</h3>
+            <form id="form-nivel6">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 11 (Transbordo):</strong> Enviar 100 uds. Directa: \$5/u. Transbordo: CF CD \$100, CV \$2/u.
+                    </div>
+                    <p><strong>11. ¿Cuál vía elige el optimizador?</strong></p>
+                    <label><input type="radio" name="q11" value="a"> Vía Directa (Costo \$500).</label><br>
+                    <label><input type="radio" name="q11" value="b"> Vía Transbordo (Costo \$300).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol11')">Ver Solución Matemática y Código</button>
+                    <div id="sol11" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 5x_D + 100y_{CD} + 2x_T\)<br>
+                        \(x_D + x_T = 100\)<br>
+                        \(x_T \le 100y_{CD}\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Transshipment", pulp.LpMinimize)
+xd = pulp.LpVariable('xd', lowBound=0)
+xt = pulp.LpVariable('xt', lowBound=0)
+ycd = pulp.LpVariable('ycd', cat='Binary')
+
+p += 5*xd + 100*ycd + 2*xt
+p += xd + xt == 100
+p += xt <= 100*ycd
+p.solve()
+# Óptimo: ycd=1, xt=100. Costo = 300</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 12 (Mezcla Continua):</strong> 100 ton de aleación con \(\ge\) 70% pureza. M1(50%, \$10/t), M2(90%, \$20/t).
+                    </div>
+                    <p><strong>12. ¿Cuál es la receta de costo mínimo?</strong></p>
+                    <label><input type="radio" name="q12" value="a"> 50 ton M1 y 50 ton M2.</label><br>
+                    <label><input type="radio" name="q12" value="b"> 100 ton M2.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol12')">Ver Solución Matemática y Código</button>
+                    <div id="sol12" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 10x_1 + 20x_2\)<br>
+                        \(x_1 + x_2 = 100\)<br>
+                        \(0.5x_1 + 0.9x_2 \ge 0.7(100)\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Blending", pulp.LpMinimize)
+x1 = pulp.LpVariable('x1', lowBound=0)
+x2 = pulp.LpVariable('x2', lowBound=0)
+
+p += 10*x1 + 20*x2
+p += x1 + x2 == 100
+p += 0.5*x1 + 0.9*x2 >= 70
+p.solve()
+# Óptimo: x1=50, x2=50. Z = 1500</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(6)">Validar Nivel 6</button>
+                <div id="feedback6" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 7 ================= -->
+        <div class="tab-pane fade" id="nivel7" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 7: Apertura de Líneas y Turnos</h3>
+            <form id="form-nivel7">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 13 (Apertura de Líneas):</strong> Pedido 100 uds (no fraccionable). Línea A (Setup \$500, CV \$1/u). Línea B (Setup \$200, CV \$3/u).
+                    </div>
+                    <p><strong>13. ¿Qué línea minimiza el costo?</strong></p>
+                    <label><input type="radio" name="q13" value="a"> Línea A (Costo total \$600).</label><br>
+                    <label><input type="radio" name="q13" value="b"> Línea B (Costo total \$500).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol13')">Ver Solución Matemática y Código</button>
+                    <div id="sol13" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min 500y_A + 1x_A + 200y_B + 3x_B\)<br>
+                        \(x_A + x_B = 100\)<br>
+                        \(x_A \le 100y_A, \quad x_B \le 100y_B\)<br>
+                        \(y_A + y_B = 1\) (No fraccionable)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Lines", pulp.LpMinimize)
+ya = pulp.LpVariable('ya', cat='Binary')
+yb = pulp.LpVariable('yb', cat='Binary')
+xa = pulp.LpVariable('xa', lowBound=0)
+xb = pulp.LpVariable('xb', lowBound=0)
+
+p += 500*ya + 1*xa + 200*yb + 3*xb
+p += xa + xb == 100
+p += xa <= 100*ya; p += xb <= 100*yb
+p += ya + yb == 1
+p.solve()
+# Óptimo: yb=1, xb=100. Costo = 500</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 14 (Variables Enteras en Turnos):</strong> Turnos de 80 uds/turno. Demanda 200 uds. 
+                    </div>
+                    <p><strong>14. Si \(80k \ge 200\), ¿cuál es el valor óptimo entero \(k\)?</strong></p>
+                    <label><input type="radio" name="q14" value="a"> \(k = 3\) turnos, capacidad ociosa de 40 uds.</label><br>
+                    <label><input type="radio" name="q14" value="b"> \(k = 2.5\) turnos.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol14')">Ver Solución Matemática y Código</button>
+                    <div id="sol14" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(\min k\)<br>
+                        \(80k \ge 200\)<br>
+                        \(k \in \mathbb{Z}^+\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Shifts", pulp.LpMinimize)
+k = pulp.LpVariable('k', lowBound=0, cat='Integer')
+
+p += k
+p += 80*k >= 200
+p.solve()
+# Óptimo: k=3</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(7)">Validar Nivel 7</button>
+                <div id="feedback7" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 8 ================= -->
+        <div class="tab-pane fade" id="nivel8" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 8: Líneas Complejas y Changeover</h3>
+            <form id="form-nivel8">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 15 (Changeover):</strong> Setup línea \$100. Changeover de X a Y \$50. 
+                    </div>
+                    <p><strong>15. ¿Qué configuración minimiza costos fijos?</strong></p>
+                    <label><input type="radio" name="q15" value="a"> 1 línea flexible con changeover (Costo \$150).</label><br>
+                    <label><input type="radio" name="q15" value="b"> 2 líneas dedicadas (Costo \$200).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol15')">Ver Solución Matemática y Código</button>
+                    <div id="sol15" class="solucion-box">
+                        <strong>Formulación Lógica:</strong><br>
+                        \(\min 100y_{ded1} + 100y_{ded2} + 100y_{flex} + 50w_{xy}\)<br>
+                        \((y_{ded1} + y_{ded2}) \text{ vs } (y_{flex} + w_{xy})\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Changeover", pulp.LpMinimize)
+y_ded = pulp.LpVariable('y_ded', cat='Integer', lowBound=0, upBound=2)
+y_flex = pulp.LpVariable('y_flex', cat='Binary')
+w_xy = pulp.LpVariable('w_xy', cat='Binary')
+
+p += 100*y_ded + 100*y_flex + 50*w_xy
+p += y_ded + y_flex >= 2 # Simplificación lógica para requerir procesar ambos
+p += w_xy >= y_flex # Si uso flex para 2, asumo changeover
+p.solve()
+# Óptimo conceptual: y_flex=1, w_xy=1, y_ded=0. Z=150</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 16 (Exclusión por Energía):</strong> L1 (Cap 400). L2 (Cap 600). Exclusión \(y_1 + y_2 \le 1\). Demanda 500.
+                    </div>
+                    <p><strong>16. ¿Qué decisión asegura factibilidad?</strong></p>
+                    <label><input type="radio" name="q16" value="a"> Abrir Línea 1 e incumplir 100 uds.</label><br>
+                    <label><input type="radio" name="q16" value="b"> Abrir la Línea 2 (\(y_1=0, y_2=1\)).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol16')">Ver Solución Matemática y Código</button>
+                    <div id="sol16" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        \(x_1 + x_2 \ge 500\)<br>
+                        \(x_1 \le 400y_1, \quad x_2 \le 600y_2\)<br>
+                        \(y_1 + y_2 \le 1\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Energy_Exclusion", pulp.LpMinimize)
+y1 = pulp.LpVariable('y1', cat='Binary')
+y2 = pulp.LpVariable('y2', cat='Binary')
+x1 = pulp.LpVariable('x1', lowBound=0)
+x2 = pulp.LpVariable('x2', lowBound=0)
+
+p += y1 + y2 # Dummy objective
+p += x1 + x2 >= 500
+p += x1 <= 400*y1
+p += x2 <= 600*y2
+p += y1 + y2 <= 1
+p.solve()
+# Óptimo Factible: y2=1, y1=0.</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(8)">Validar Nivel 8</button>
+                <div id="feedback8" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 9 ================= -->
+        <div class="tab-pane fade" id="nivel9" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 9: Integrador I (Inventarios)</h3>
+            <form id="form-nivel9">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 17 (Prod vs Inventario):</strong> Demanda P1=100, P2=100. Setup \$300/per. CV \$1/u. Inv \$2/u/per.
+                    </div>
+                    <p><strong>17. ¿Qué minimiza el costo total?</strong></p>
+                    <label><input type="radio" name="q17" value="a"> Producir 200 en P1 y almacenar (Costo \$700).</label><br>
+                    <label><input type="radio" name="q17" value="b"> Producir 100 en P1 y 100 en P2 (Costo \$800).</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol17')">Ver Solución Matemática y Código</button>
+                    <div id="sol17" class="solucion-box">
+                        <strong>Formulación Lot Sizing:</strong><br>
+                        \(\min 300y_1 + 300y_2 + 1x_1 + 1x_2 + 2I_1\)<br>
+                        \(x_1 - I_1 = 100\)<br>
+                        \(I_1 + x_2 = 100\)<br>
+                        \(x_t \le My_t\)<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Lot_Sizing", pulp.LpMinimize)
+y1 = pulp.LpVariable('y1', cat='Binary')
+y2 = pulp.LpVariable('y2', cat='Binary')
+x1 = pulp.LpVariable('x1', lowBound=0)
+x2 = pulp.LpVariable('x2', lowBound=0)
+i1 = pulp.LpVariable('i1', lowBound=0)
+
+p += 300*y1 + 300*y2 + x1 + x2 + 2*i1
+p += x1 - i1 == 100
+p += i1 + x2 == 100
+p += x1 <= 1000*y1; p += x2 <= 1000*y2
+p.solve()
+# Óptimo: y1=1, y2=0, x1=200, i1=100. Costo = 700</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 18 (Transbordo y Plantas):</strong> El transbordo \(2 \to 1\) no puede superar la capacidad ociosa de L1 (Cap 200). 
+                    </div>
+                    <p><strong>18. ¿Qué restricción lógica impone esto?</strong></p>
+                    <label><input type="radio" name="q18" value="a"> \(\text{Flujo}_{1 \to 2} = \text{Demanda}\)</label><br>
+                    <label><input type="radio" name="q18" value="b"> \(\text{Flujo}_{2 \to 1} \le 200 - \text{Producción}_{L1}\)</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol18')">Ver Solución Matemática y Código</button>
+                    <div id="sol18" class="solucion-box">
+                        <strong>Formulación:</strong><br>
+                        Capacidad remanente \(= Cap_{max} - x_{L1}\)<br>
+                        \(F_{21} \le 200 - x_{L1} \implies F_{21} + x_{L1} \le 200\)<br>
+                        <strong>Código Python (Lógico):</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Trans_Cap", pulp.LpMaximize)
+xl1 = pulp.LpVariable('xl1', lowBound=0)
+f21 = pulp.LpVariable('f21', lowBound=0)
+# Restricción directa:
+p += f21 + xl1 <= 200
+# Asegura que lo que produce más lo que entra no exceda la capacidad de la planta.</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(9)">Validar Nivel 9</button>
+                <div id="feedback9" class="mt-3 text-danger fw-bold"></div>
+            </form>
+        </div>
+
+        <!-- ================= NIVEL 10 ================= -->
+        <div class="tab-pane fade" id="nivel10" role="tabpanel">
+            <h3 class="text-primary mb-3">Nivel 10: Supply Chain End-to-End</h3>
+            <form id="form-nivel10">
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 19 (Dedicadas vs Flexibles):</strong> Línea Dedicada (Eficiencia 100%, Setup Alto). Flexibles (Eficiencia 80%, Setup Bajo). Demanda Pico supera a las flexibles combinadas.
+                    </div>
+                    <p><strong>19. ¿Qué dinámica modela el solver binario?</strong></p>
+                    <label><input type="radio" name="q19" value="a"> Apaga flexibles y rechaza Beta.</label><br>
+                    <label><input type="radio" name="q19" value="b"> Activa la línea dedicada absorbiendo el costo de setup para garantizar balance de masa.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol19')">Ver Solución Matemática y Código</button>
+                    <div id="sol19" class="solucion-box">
+                        <strong>Formulación Balance:</strong><br>
+                        \(\sum X_{flex} + X_{dedicada} \ge Demanda Pico\)<br>
+                        Si \(\max(\sum X_{flex}) < Demanda\), entonces \(y_{dedicada} = 1\) obligatoriamente.<br>
+                        <strong>Código Python:</strong>
+                        <pre class="code-block"><code>import pulp
+p = pulp.LpProblem("Peak_Demand", pulp.LpMinimize)
+y_ded = pulp.LpVariable('y_ded', cat='Binary')
+y_flex = pulp.LpVariable('y_flex', cat='Binary')
+x_ded = pulp.LpVariable('x_ded', lowBound=0)
+x_flex = pulp.LpVariable('x_flex', lowBound=0)
+
+p += 1000*y_ded + 200*y_flex + 1*x_ded + 1.2*x_flex
+p += x_ded + x_flex >= 500 # Peak
+p += x_flex <= 400*y_flex # Capacity shortfall
+p += x_ded <= 600*y_ded
+p.solve()
+# Óptimo: y_ded=1, x_ded=500. Flexibles insuficientes por sí solas.</code></pre>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="scenario-box">
+                        <strong>Escenario 20 (El Reto Final):</strong> Balance de Masa Multi-nivel: \(Inv_{t-1} + Prod_t + In_{Trans} = Demanda_t + Inv_t + Out_{Trans}\).
+                    </div>
+                    <p><strong>20. ¿Por qué es la restricción más crítica?</strong></p>
+                    <label><input type="radio" name="q20" value="a"> Porque acopla decisiones espaciales y temporales, asegurando la conservación del producto físico en la red.</label><br>
+                    <label><input type="radio" name="q20" value="b"> Porque hace los costos continuos.</label><br>
+                    <button type="button" class="btn btn-outline-info btn-sm mt-3" onclick="mostrarSolucion('sol20')">Ver Solución Matemática y Código</button>
+                    <div id="sol20" class="solucion-box">
+                        <strong>Formulación (Ecuación Maestra de Inventario):</strong><br>
+                        \(I_{i, t-1} + X_{i,t} + \sum_j F_{ji,t} = D_{i,t} + I_{i,t} + \sum_j F_{ij,t} \quad \forall i, t\)<br>
+                        Donde \(X_{i,t} \le M y_{i,t}\) (Setup planta/línea).<br>
+                        <strong>Código Python (Estructura de Nodo):</strong>
+                        <pre class="code-block"><code>import pulp
+# Ecuación genérica de conservación en End-to-End
+# p += (inv_ant[nodo] + prod[nodo] + sum(flujo_in[origen][nodo]) == 
+#       demanda[nodo] + inv_actual[nodo] + sum(flujo_out[nodo][destino]))
+# Este balance asegura rigor físico: nada se crea ni se destruye.</code></pre>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success px-4" onclick="checkLevel(10)">Validar Nivel 10</button>
+                <div id="feedback10" class="mt-3 text-danger fw-bold fs-5"></div>
+            </form>
+        </div>
 
     </div>
 </div>
@@ -163,8 +747,16 @@ p.solve()
     }
 
     const answers = {
-        1: { q1: 'b', q2: 'a' }
-        // Agrega aquí las demás respuestas de los niveles
+        1: { q1: 'b', q2: 'a' },
+        2: { q3: 'a', q4: 'a' },
+        3: { q5: 'a', q6: 'b' },
+        4: { q7: 'b', q8: 'b' },
+        5: { q9: 'a', q10: 'b' },
+        6: { q11: 'b', q12: 'a' },
+        7: { q13: 'b', q14: 'a' },
+        8: { q15: 'a', q16: 'b' },
+        9: { q17: 'a', q18: 'b' },
+        10: { q19: 'b', q20: 'a' }
     };
 
     function checkLevel(level) {
@@ -184,10 +776,23 @@ p.solve()
         if (score === total) {
             feedback.className = 'mt-3 text-success fw-bold fs-5';
             feedback.innerText = '¡Decisiones analíticas correctas! Nivel superado.';
-            // Lógica de paso de nivel...
+            
+            if (level < 10) {
+                let nextLevel = level + 1;
+                let nextTab = document.getElementById('nivel' + nextLevel + '-tab');
+                nextTab.disabled = false;
+                nextTab.classList.remove('locked-tab');
+                nextTab.style.color = '#002b5c';
+                
+                nextTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                
+                setTimeout(() => nextTab.click(), 1500);
+            } else {
+                feedback.innerText = '¡MISIÓN CUMPLIDA! Has demostrado un nivel gerencial y matemático sobresaliente en PLEM.';
+            }
         } else {
             feedback.className = 'mt-3 text-danger fw-bold fs-5';
-            feedback.innerText = `Análisis incorrecto. Has acertado ${score} de ${total}.`;
+            feedback.innerText = `Análisis incorrecto. Has acertado ${score} de ${total}. Modela y resuelve los casos nuevamente.`;
         }
     }
 </script>
